@@ -1,0 +1,1 @@
+while true; do inotifywait -e close_write,move_self $1/notes.md; sh build.sh $1; done
