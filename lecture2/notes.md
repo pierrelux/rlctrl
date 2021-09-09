@@ -253,7 +253,7 @@ Let $d \in \mathcal{D}^{\text{MD}}$ be a decision rule:
 [r_d]_i \triangleq r(i, d(i)) \enspace \text{and} \enspace [P_d]_{ij} = p(j|i,d(i))
 \end{align*}
 
-If $d \in \mathcal{D}^{\text{MR}}$ be a decision rule: 
+Let $d \in \mathcal{D}^{\text{MR}}$ be a decision rule: 
 \begin{align*}
 [r_d]_i  \triangleq \sum_{a \in \mathcal{A}(i)} r(i, a)d(a|i) \enspace \text{and} \enspace [P_d]_{ij} =  \sum_{a \in \mathcal{A}(i)} p(j|i,a)d(a|i)
 \end{align*}
