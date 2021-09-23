@@ -32,6 +32,7 @@ pandoc-latex-environment:
 <!-- - Next year: lemma 6.1.2 about (I - gamma P_d) being a positive operator -->
 - The Bellman optimality operator is a contraction
 - Bounds on value iteration
+- Derivative, Spivak notation
 
 # Optimality equations
 
@@ -70,8 +71,8 @@ Assume that $Lv(s) \geq Lu(s)$:
 
 Now let $a^\star_s \in \arg\max_{a \in \mathcal{A}(s)} \left\{r(s,a) + \gamma \sum_{j\in\mathcal{S}} p(j|s,a) v(j) \right\}$.
 \begin{align*}
-&\leq r(s, a^\star_s) + \gamma \sum_{j\in\mathcal{S}} p(j|s,a^\star_s) v(j) - r(s,a^\star_s) - \gamma \sum_{s\in\mathcal{S}} p(j|s,a)u(j)\\
-&= \gamma \sum_{j\in\mathcal{S}}p(j|s,a^\star_s)\left(v(j) - u(j) \right) \leq \gamma \sum_{j\in\mathcal{A}(s)} p(j|s,a) \underbrace{\| v- u\|}_{\max_{i\in\mathcal{S}}|v_i - u_i|} = \gamma \|v - u\| \enspace .
+&\leq r(s, a^\star_s) + \gamma \sum_{j\in\mathcal{S}} p(j|s,a^\star_s) v(j) - r(s,a^\star_s) - \gamma \sum_{s\in\mathcal{S}} p(j|s,a^\star_s)u(j)\\
+&= \gamma \sum_{j\in\mathcal{S}}p(j|s,a^\star_s)\left(v(j) - u(j) \right) \leq \gamma \sum_{j\in\mathcal{A}(s)} p(j|s,a^\star_s) \underbrace{\| v- u\|}_{\max_{i\in\mathcal{S}}|v_i - u_i|} = \gamma \|v - u\| \enspace .
 \end{align*}
 
 Therefore: 
@@ -212,8 +213,8 @@ Looking at the first term:
 \begin{align*}
 \|v_{(d_\epsilon)^\infty, \gamma} - v^{(k+1)}\| &= \| L_{d_\epsilon} v_{(d_\epsilon)^\infty, \gamma} - v^{(k+1)} \|\\
 &\leq \| L_{d_\epsilon} v_{(d_\epsilon)^\infty, \gamma} - Lv^{(k+1)} \| + \| Lv^{(k+1)} - v^{(k+1)} \|\\
-&= \| L_{d_\epsilon} v_{(d_\epsilon)^\infty, \gamma} - L_{\mathcolor{magenta}{d_\epsilon}}v^{(k+1)} \| + \| Lv^{(k+1)} - \mathcolor{cyan}{L}v^{(k+1)} \|\\
-&\mathcolor{red}{\leq} \gamma \| v_{(d_\epsilon)^\infty, \gamma} - v^{(k+1)}\| + \gamma \| v^{(k+1)} - v^{(k+1)} \|
+&= \| L_{d_\epsilon} v_{(d_\epsilon)^\infty, \gamma} - L_{\mathcolor{magenta}{d_\epsilon}}v^{(k+1)} \| + \| Lv^{(k+1)} - \mathcolor{cyan}{L}v^{(k)} \|\\
+&\mathcolor{red}{\leq} \gamma \| v_{(d_\epsilon)^\infty, \gamma} - v^{(k+1)}\| + \gamma \| v^{(k+1)} - v^{(k)} \|
 \end{align*}
 
 # Proof
