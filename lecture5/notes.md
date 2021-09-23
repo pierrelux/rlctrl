@@ -69,7 +69,7 @@ Therefore:
 \begin{align*}
 r_{d^{(k+1)}} + \gamma P_{d^{(k+1)}} v^{(k)} \geq r_{d^{(k)}} + \gamma P_{d^{(k)}} v^{(k)} = v^{(k)} \enspace .
 \end{align*}
-where the right-hand side follows from the fact that we found $v^{(k)}$ by solving for $v$ in $(I \gamma P_{d^{(k)}}) v = r_{d^{(k)}}$.
+where the right-hand side follows from the fact that we found $v^{(k)}$ by solving for $v$ in $(I + \gamma P_{d^{(k)}}) v = r_{d^{(k)}}$.
 
 # Proof
 
@@ -88,7 +88,7 @@ Multiplying both sides by $\left( I - \gamma P_{d^{(k+1)}} v^{(k)} \right)^{-1}$
 
 ::: warning
 
-In order to make sure that the order of inequality remains the same in the above proof, we need to show that $\left( I - \gamma P_{d^{(k+1)}} v^{(k)} \right)^{-1}$ is a *positive* operator. That is, $(I - \gamma P_d)^{-1} u \geq 0$ for $u \geq 0, u \in \mathcal{V}, d in \mathcal{D}^{MR}$, which we write as $(I - \gamma P_d)^{-1} \geq 0$.  
+In order to make sure that the order of inequality remains the same in the above proof, we need to show that $\left( I - \gamma P_{d^{(k+1)}} v^{(k)} \right)^{-1}$ is a *positive* operator. That is, $(I - \gamma P_d)^{-1} u \geq 0$ for $u \geq 0, u \in \mathcal{V}, d \in \mathcal{D}^{MR}$, which we write as $(I - \gamma P_d)^{-1} \geq 0$.  
 
 ::: 
 
