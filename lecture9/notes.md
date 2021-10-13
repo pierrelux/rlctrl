@@ -28,12 +28,12 @@ More specifically, we consider a linear model of the form:
 \begin{align*}
 v(s; w) = \phi(s)^\top w \enspace ,
 \end{align*}
-where $\phi: \mathcal{S} \to \mathbb{R}^k$ is a given feature mapping and $w \in \mathbb{R}^k$ is a weight vector.
+where $\phi: \mathcal{S} \to \mathbb{R}^d$ is a given feature mapping and $w \in \mathbb{R}^d$ is a weight vector.
 
 # TD(0) with linear function approximation
 
 ::: note
-We've entered the realm of approximate DP last week via Stochastic Approximation, which gave us randomized algorithms with the important property of being *model-free**: which do not require knowledge of $P, r$ directly, but only samples of the induced process.
+We've entered the realm of approximate DP last week via Stochastic Approximation, which gave us randomized algorithms with the important property of being **model-free**: which do not require knowledge of $P, r$ directly, but only samples of the induced process.
 
 Now, we are adding one more layer of approximation: that of approximation of the values across states. This is crucial in large or infinite problems.
 :::
@@ -77,7 +77,7 @@ The ODE approximation of TD(0) is described by the linear system:
 \begin{align*}
 \Phi^\top X \left( \Phi w - \gamma P_d \Phi w - r_d\right) = 0 \enspace .
 \end{align*}
-where $\Phi \in \mathbb{R}^{|\mathcal{S}\times k}$ is a matrix containing the $\phi(s)$ as rows.
+where $\Phi \in \mathbb{R}^{|\mathcal{S}|\times k}$ is a matrix containing the $\phi(s)$ as rows.
 Furthermore, $X \in \mathbb{R}^{|\mathcal{S}| \times |\mathcal{S}|}$ is a diagonal matrix containing the stationary distribution corresponding to $d$ on the diagonal.
 
 ::: note
