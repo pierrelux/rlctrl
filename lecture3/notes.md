@@ -122,7 +122,7 @@ and $r_d \in \mathbb{R}^{|\mathcal{S}|}$ as:
 
 Furthermore, $P_\pi^t \in \mathbb{R}^{|\mathcal{S}|\times|\mathcal{S}|}$:
 \begin{align*}
-P_\pi^t = P_{d_t} P_{d_{t-1}} \hdots P_{d_1} \enspace .
+P_\pi^t = P_{d_1} P_{d_{2}} \hdots P_{d_t} \enspace .
 \end{align*}
 
 
