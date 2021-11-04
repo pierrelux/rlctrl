@@ -135,7 +135,7 @@ Remember that the above reads as $L'_\tau(v)(u)$: a mapping which takes $v$ as i
 
 The Gâteaux derivative of $L_\tau$ is given by: 
 \begin{align*}
-((L_\tau'v)u)(s) &= \gamma \sum_{a \in \mathcal{A}(s)} d_\tau(a|s) \sum_{j\in\mathcal{S}} p(j|s,a)u(s') \\
+((L_\tau'v)u)(s) &= \gamma \sum_{a \in \mathcal{A}(s)} d_\tau(a|s) \sum_{j\in\mathcal{S}} p(j|s,a)u(j) \\
 d_\tau(a|s) &= \frac{\exp \left((1/\tau) \left( r(s,a) + \gamma \sum_{j\in\mathcal{S}} p(j|s,a) v(j)\right)\right) }{\sum_{a' \in \mathcal{A}(s)} \exp \left((1/\tau) \left( r(s,a') + \gamma \sum_{j\in\mathcal{S}} p(j|s,a') v(j)\right)\right)}
 \end{align*}
 
