@@ -120,7 +120,7 @@ This is essentially ``policy iteration'' for the smooth Bellman optimality equat
 
 The main update in the above algorithm reads as:
 \begin{align*}
-v^{(k+1)} &= v^{(k)} - \left(B'_\tau v^{(k)}\right)^{-1} B_\tau v^{(k)} = v^{(k)} - \left(I - L'_\tau v^{(k)}\right)^{-1} (I - L_\tau v^{(k)}) \enspace .
+v^{(k+1)} &= v^{(k)} - \left(B'_\tau v^{(k)}\right)^{-1} B_\tau v^{(k)} = v^{(k)} - \left(I - L'_\tau v^{(k)}\right)^{-1} (I - L_\tau) v^{(k)} \enspace .
 \end{align*}
 Here, $L'$ denotes the Gâteaux derivative (G-derivative) of $L$ at $v^{(k)}$. That is, the linear operator $L'v: \mathcal{V} \to \mathcal{V}$: 
 \begin{align*}
@@ -184,7 +184,7 @@ We can develop a "modifed" counterpart to the above procedure that mimics "modif
 - Repeat:
     - Set $\tilde{\Delta}^{(1)} = \tilde{\Delta}_0$
     - Repeat from $i=1, \hdots, n-1$
-        - $\tilde{\Delta}^{(i+1)}  = B_\tau v^{(k)} + (L'_\tau v^{(k)})\tilde{\Delta}^{(i)}\enspace .$ 
+        - $\tilde{\Delta}^{(i+1)}  = -B_\tau v^{(k)} + (L'_\tau v^{(k)})\tilde{\Delta}^{(i)}\enspace .$ 
     - Let $\Delta^{(k)} = \tilde{\Delta}^{(n)}$
     - Set $v^{(k+1)} = v^{(k)} - \Delta^{(k)}$
     - Terminate if $\|v^{(k+1)} - v^{(k)}\| \leq \epsilon$
