@@ -69,7 +69,7 @@ Therefore:
 \begin{align*}
 r_{d^{(k+1)}} + \gamma P_{d^{(k+1)}} v^{(k)} \geq r_{d^{(k)}} + \gamma P_{d^{(k)}} v^{(k)} = v^{(k)} \enspace .
 \end{align*}
-where the right-hand side follows from the fact that we found $v^{(k)}$ by solving for $v$ in $(I + \gamma P_{d^{(k)}}) v = r_{d^{(k)}}$.
+where the right-hand side follows from the fact that we found $v^{(k)}$ by solving for $v$ in $(I - \gamma P_{d^{(k)}}) v = r_{d^{(k)}}$.
 
 # Proof
 
@@ -204,7 +204,7 @@ $\| x^{(k+1)} - x^\star \| \leq \lambda \| x^{(k)} - x^\star\|^2$ \enspace .
 
 ::: warning
 
-Newton's method may not be *norm-reducing*, ie it need not be the case that $\|f(x^{(k+1)}) \leq \| f(x^{(k)}\|, \enspace k=0,1,\hdots$
+Newton's method may not be *norm-reducing*, ie it need not be the case that $\|f(x^{(k+1)})\| \leq \| f(x^{(k)}\|, \enspace k=0,1,\hdots$
 
 :::
 

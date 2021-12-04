@@ -94,7 +94,7 @@ where we just added and subtracted.
 
 What assumption do we need on the noise term so that it can wash away/average out through time? 
 
-- Commmon assumption: we noise term is a **Martingale**
+- Common assumption: the noise term is a **Martingale**
 
 # Martingale
 
@@ -186,8 +186,8 @@ converges to $x^\star, f(x^\star) = \bar{c}$ under the following assumptions.
 The Q-learning update (tabular) was of the form: 
 
 \begin{align*}
-&Q^{(k+1)}(s, a) = (1 - \eta_k)Q^{(k)}(s,a) + \eta_k (F_k Q^{(k)})(s,a), \enspace s \in \mathcal{S}, a \in \mathcal{A}(s) \\
-&(F_kQ^{(k)})(s,a) = \begin{cases} 
+&Q^{(k+1)}(s, a) = (1 - \eta_k)Q^{(k)}(s,a) + \eta_k (\tilde{F}_k Q^{(k)})(s,a), \enspace s \in \mathcal{S}, a \in \mathcal{A}(s) \\
+&(\tilde{F}_kQ^{(k)})(s,a) = \begin{cases} 
 r(s_t, a_t) + \gamma \max_{a' \in \mathcal{A}(s_t)} Q^{(k)}(s_t, a') & \text{if } (s,a) = (s_t, a_t) \\
 Q^{(k)}(s,a) & \text{otherwise}
 \end{cases}

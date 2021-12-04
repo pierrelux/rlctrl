@@ -178,7 +178,7 @@ Theorem
 
 # "Modified" Newton-Kantorovich
 
-We can develop a "modifed" counterpart to the above procedure that mimics "modifed policy iteration" where we only take a few terms in the Neumann series expansion. 
+We can develop a "modified" counterpart to the above procedure that mimics "modified policy iteration" where we only take a few terms in the Neumann series expansion. 
 
 - Given $v^{(0)}\in \mathcal{V}, \epsilon > 0$, truncation $n$, initial guess $\tilde{\Delta}_0$
 - Repeat:
@@ -277,7 +277,7 @@ Theorem (6.9.1 in Puterman)
 
 :   Let $d \in \mathcal{D}^{MR}$ and for any $s \in \mathcal{S}$, $a \in \mathcal{A}(s)$, and define: 
 \begin{align*}
-x_d(s,a) \triangleq \sum_{i\in \mathcal{S}} \alpha(i)\sum_{t=1}^\infty \gamma^{(t-1)} P_{d^\infty}(S_t = s, A_t = a | S_1 = i)
+x_d(s,a) \triangleq \sum_{i\in \mathcal{S}} \alpha(i)\sum_{t=1}^\infty \gamma^{t-1} P_{d^\infty}(S_t = s, A_t = a | S_1 = i)
 \end{align*}
 
 1. $x_d$ is a feasible solution to the dual problem
@@ -288,4 +288,4 @@ d_x^\infty(a | s) = \frac{x(s,a)}{\sum_{a'\in \mathcal{A}(s)}x(s,a')}
 
 # Interpretation 
 
-$x(s,a)$ is the total discounted probability joint probability that starting from the initial state $\alpha$, the system is in state $s$ taking action $a$.
+$x(s,a)$ is the total discounted joint probability that starting from the initial state $\alpha$, the system is in state $s$ taking action $a$.

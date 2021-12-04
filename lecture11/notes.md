@@ -38,7 +38,7 @@ in which we have only noisy observations of $f(x)$.
 We then analyzed TD(0) using the ODE method and found that the mean iterates can be written as:
 
 \begin{align*}
-\bar{w}^{(k)} &=  \bar{w}^{(k)} + \eta_k \mathbb{E}\left[  \left(R_t + \phi_t^\top \bar{w}^{(k)} - \gamma \phi_{t+1}^\top \bar{w}^{(k)}\right) \phi_t \right]\\
+\bar{w}^{(k+1)} &=  \bar{w}^{(k)} + \eta_k \mathbb{E}\left[  \left(R_t + \phi_t^\top \bar{w}^{(k)} - \gamma \phi_{t+1}^\top \bar{w}^{(k)}\right) \phi_t \right]\\
 &=\bar{w}^{(k)} + \eta_k \left(\Phi^\top X r_d - \Phi^\top X \left(I - \gamma P_d\right) \Phi \bar{w}^{(k)} \right) \enspace .
 \end{align*}
 This lead us to study the corresponding linear ODE:
@@ -81,7 +81,7 @@ if $x$ is the stationary distribution of the Markov chain under $P$.
 
 # Error bound
 
-We can show that (prop 6.3.1) that the error can be bounded by: 
+We can show (prop 6.3.1) that the error can be bounded by: 
 
 \begin{align*}
 \|\underbrace{v_d}_{\mathclap{\text{true value function}}} - \Phi \overbrace{w^\star}^{\mathclap{\text{TD(0) solution}}}\|_x \leq \frac{1}{\sqrt{1 - \gamma^2}} \|v_d - \underbrace{T v_d}_{\mathclap{\text{projection of the true value function}}} \|_x \enspace .
@@ -94,7 +94,7 @@ We can control the bias using a variant of TD called TD($\lambda$). The idea is 
 \begin{align*}
 L^{(\lambda)}_d \triangleq (1 - \lambda) \sum_{k=0}^\infty \lambda^k L_d^{k+1} \enspace ,
 \end{align*} 
-with $\lambda \in [0, 1])$. Note that $L_d^k$ denotes the $k$-application of the *single*-step operator $L_d$, ie: $L^1 = L, L^2 = L L, ...$.
+with $\lambda \in [0, 1]$. Note that $L_d^k$ denotes the $k$-application of the *single*-step operator $L_d$, ie: $L^1 = L, L^2 = L L, ...$.
 We can then consider the fixed-point problem $L^{(\lambda)}_d v = v$ where:
 \begin{align*}
 L^{(\lambda)}_d v &= r^{(\lambda)}_d + \gamma P^{(\lambda)}_d v\\

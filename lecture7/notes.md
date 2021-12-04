@@ -33,7 +33,7 @@ The version of the optimality equations that we used so far was:
 \begin{align*}
 v^\star_\gamma(s) = \max_{a \in \mathcal{A}(s)}\left\{ r(s,a) + \gamma \sum_{j\in\mathcal{S}} p(j|s,a) v^\star_\gamma(j) \right\} \enspace .
 \end{align*}
-Now the same result can also derived over Q-factors/Q-values:
+Now the same result can also be derived over Q-factors/Q-values:
 \begin{align*}
 Q^\star_\gamma(s,a) = r(s,a) + \gamma \sum_{j \in \mathcal{A}(s)} p(j|s,a) \max_{a' \in \mathcal{A}(j)} Q^\star_\gamma(j,a') \enspace .
 \end{align*}
@@ -101,7 +101,7 @@ Theorem (O\&R 12.2.1)
 :   Let $T: \mathcal{V} \to \mathcal{V}$ be a $\gamma$-contraction and $x^\star$ its unique fixed point. Furthermore, let $\{y_k\} \in \mathcal{V}$ be any sequence, and define the local error for $k=0, 1, \hdots$ as $\epsilon_k \triangleq \| T y^{(k)} - y^{(k+1)}\|$. It then holds for $k=0, 1, \hdots$ that: 
 \begin{align*}
 \|y^{(k+1)} - x^\star\| &\leq \frac{1}{1 - \gamma}\left(\gamma \|y^{(k+1)} - y^{(k)}\| + \epsilon_k \right) \\
-\|y^{(k+1)} - x^\star\| &\leq \|x^{(k+1)} - x^\star\| + \sum_{j=0}^k \gamma^{k-j} \epsilon_j + \gamma^{(k+1)}\|x^{(0)} - y^{(0)}\| \, ,
+\|y^{(k+1)} - x^\star\| &\leq \|x^{(k+1)} - x^\star\| + \sum_{j=0}^k \gamma^{k-j} \epsilon_j + \gamma^{k+1}\|x^{(0)} - y^{(0)}\| \, ,
 \end{align*}
 and $\lim_{k\to \infty} y^{(k)} = x^\star$ if and only if $\lim_{k\to\infty} \epsilon_k = 0$ \enspace .
 
@@ -133,7 +133,7 @@ Then the sequence defined by $y^{(k+1)} = \tilde{T}_k y^{(k)}$ converges to the 
 
 12.2.2 provides almost all we need to show convergence of SVI. The argument may look like: 
 
-- Given  $s\in\mathcal{S}$ and $a \in \mathcal{A}(s)$, $F_kQ(s,a)$ converges to $FQ(s,a)$ by the law of large numbers, hence SVI must converge. But...
+- Given  $s\in\mathcal{S}$ and $a \in \mathcal{A}(s)$, $\tilde{F}_kQ(s,a)$ converges to $FQ(s,a)$ by the law of large numbers, hence SVI must converge. But...
 
 ::: warning
 12.2.2 requires $\lim_{k\to\infty} \|\tilde{T}_k x - Tx \| = \sup_{s \in \mathcal{S}}|(\tilde{T}_kx)(s) - (Tx)(s)| = 0$. Therefore, we'd want to not only draw from only **one** conditional $p(\cdot|s,a)$ but for all $s \in \mathcal{S}, a \in \mathcal{A}(s)$ infinitely often. 
@@ -143,8 +143,8 @@ Then the sequence defined by $y^{(k+1)} = \tilde{T}_k y^{(k)}$ converges to the 
 
 Rather than keeping the set of realizations from the conditional $p(\cdot |s,a)$ for each $s \in \mathcal{S}, a \in \mathcal{A}(s)$, we can maintain an online average:
 \begin{align*}
-&Q^{(k+1)}(s, a) = (1 - \eta_k)Q^{(k)}(s,a) + \eta_k (F_k Q^{(k)})(s,a), \enspace s \in \mathcal{S}, a \in \mathcal{A}(s) \\
-&(F_kQ^{(k)})(s,a) = \begin{cases} 
+&Q^{(k+1)}(s, a) = (1 - \eta_k)Q^{(k)}(s,a) + \eta_k (\tilde{F}_k Q^{(k)})(s,a), \enspace s \in \mathcal{S}, a \in \mathcal{A}(s) \\
+&(\tilde{F}_kQ^{(k)})(s,a) = \begin{cases} 
 r(s_t, a_t) + \gamma \max_{a' \in \mathcal{A}(s_t)} Q^{(k)}(s_t, a') & \text{if } (s,a) = (s_t, a_t) \\
 Q^{(k)}(s,a) & \text{otherwise}
 \end{cases}
