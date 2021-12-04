@@ -30,7 +30,7 @@ Under some assumptions on the type of noise, we saw that we can approximate the 
 If $x^\star$ is an asymptotically stable equilibrium of the ODE, then $x^{(k)} \to x^\star$ with probability one. 
 
 
-# TD(0) witih linear function approximation
+# TD(0) with linear function approximation
 \begin{align*}
 w^{(t+1)} = w^{(t)} + \eta_t \underbrace{\underbrace{\left(r_t + \gamma v\left(s_{t+1}; w^{(t)}\right) - v\left(s_t; w^{(t)}\right) \right)}_{\delta_t} \phi_t}_{y_t}\enspace .
 \end{align*}
@@ -51,7 +51,7 @@ Here $\phi_t \triangleq \phi(S_t)$, $\phi_{t+1} \triangleq \phi(S_{t+1})$, $R_t 
 
 The above expectation is linear function of $\bar{w}^{(k)}$, therefore, we can also write it in matrix form as: 
 \begin{align*}
-\bar{w}^{(k)} &=  \bar{w}^{(k)} + \eta_k \mathbb{E}\left[  \left(R_t + \phi_t^\top \bar{w}^{(k)} - \gamma \phi_{t+1}^\top \bar{w}^{(k)}\right) \phi_t \right]\\
+\bar{w}^{(k+1)} &=  \bar{w}^{(k)} + \eta_k \mathbb{E}\left[  \left(R_t + \phi_t^\top \bar{w}^{(k)} - \gamma \phi_{t+1}^\top \bar{w}^{(k)}\right) \phi_t \right]\\
 &=\bar{w}^{(k)} + \eta_k \left(\Phi^\top X r_d - \Phi^\top X \left(I - \gamma P_d\right) \Phi \bar{w}^{(k)} \right) \enspace .
 \end{align*}
 
@@ -84,7 +84,7 @@ is negative definite.
 Instead of the above two analysis methods, we are instead going to leverage an operator theoretic perspective on our problem. 
 Consider again the deterministic iterates: 
 \begin{align*}
-\bar{w}^{(k)} &=\bar{w}^{(k)} + \eta_k \left(\Phi^\top X r_d - \Phi^\top X \left(I - \gamma P_d\right) \Phi \bar{w}^{(k)} \right) \enspace .
+\bar{w}^{(k+1)} &=\bar{w}^{(k)} + \eta_k \left(\Phi^\top X r_d - \Phi^\top X \left(I - \gamma P_d\right) \Phi \bar{w}^{(k)} \right) \enspace .
 \end{align*}
 
 This can be seen as an instance of Richardson iteration for solving the linear system of equations: 
@@ -124,7 +124,7 @@ We made the assumption that $\Phi$ is full rank, which means that the set of min
 
 Let $T$ be an operator projecting onto the space $\mathcal{B}$ spanned by the columns of $\Phi$ (ie. any vector in that space can be written as a unique linear combination of the vectors in the basis). 
 
-The meaning of $T$ being a projection is that that is given any $v\in \mathbb{R}^{|\mathcal{S}|}$, $Tv$ returns the unique vector from $\mathcal{B}$ that minimizes $\|v - \hat{v}\|^2_x$ for any $\hat{v} \in \mathcal{B}$.
+The meaning of $T$ being a projection is that is given any $v\in \mathbb{R}^{|\mathcal{S}|}$, $Tv$ returns the unique vector from $\mathcal{B}$ that minimizes $\|v - \hat{v}\|^2_x$ for any $\hat{v} \in \mathcal{B}$.
 That is: 
 \begin{align*}
 Tv = \Phi \hat{w} \enspace \text{where}\enspace \hat{w} = \arg\min_{w \in \mathbb{R}^m} \| v - \Phi w\|^2_x
@@ -135,7 +135,7 @@ Tv = \Phi \hat{w} \enspace \text{where}\enspace \hat{w} = \arg\min_{w \in \mathb
 
 In our case, we want to project $L_d (\Phi w) \in \mathbb{R}^{|\mathcal{S}|}$. This means that we want to find a $\hat{w} \in \mathbb{R}^{m}$ such that:
 \begin{align*}
-\hat{w} = \arg\min_{w\in\mathbb{R}^m} \| \Phi w - (r_d + \gamma P \Phi \hat{w})\|^2_x
+\hat{w} = \arg\min_{w\in\mathbb{R}^m} \| \Phi w - (r_d + \gamma P_d \Phi \hat{w})\|^2_x
 \end{align*}
 
 The **projected policy evaluation operator** is the composition of the projection operator $T$ with the policy evaluation operator $L_d$. The corresponding fixed-point problem is then to find a $w \in \mathbb{R}^k$ such that: 
@@ -149,7 +149,7 @@ Wouldn't be nice if $T L_d$ were to be a contraction? We could then leverage Ban
 (Spoiler: yes, it can be). 
 
 Two notions to see before we get there:
-1. Projections are nonexpansives
+1. Projections are nonexpansive
 2. On-policy inequality
 
 1+2 + contractivity of $L_d$ will allows to build our proof. 
@@ -165,7 +165,7 @@ Projections are nonexpansive, this means that:
 Also, by the Pythagorean theorem:
 
 \begin{align*}
-\| Tv - Tu \|^2_x = \|T(v - u)\|^2_x \leq \|T(v -u)\|^2 + \| (I - T)(v - u) \|_x^2 = \|v - u\|^2_x
+\| Tv - Tu \|^2_x = \|T(v - u)\|^2_x \leq \|T(v -u)\|^2_x + \| (I - T)(v - u) \|_x^2 = \|v - u\|^2_x
 \end{align*}
 
 # 

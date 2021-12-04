@@ -38,7 +38,7 @@ pandoc-latex-environment:
 
 Today, we will see that the nonlinear equations:
 \begin{align*}
-v(s) = \max_{a \in \mathcal{A}(s)} r(s,a) + \sum_{j\in\mathcal{S}} p(j|s,a) v(j) \enspace ,
+v(s) = \max_{a \in \mathcal{A}(s)} r(s,a) + \gamma \sum_{j\in\mathcal{S}} p(j|s,a) v(j) \enspace ,
 \end{align*}
 called the **optimality equations** have a unique solution, and that solution coincides with $v^\star_\gamma$ -- the value of the MDP. In vector notation: 
 \begin{align*}
@@ -146,7 +146,7 @@ L_{d^\star}v_\gamma^\star = r_{d^\star} + \gamma P_{d^\star} v^\star_\gamma = v^
 # Proof
 By the application of Neumann's lemma for policy evaluation(last lecture), we have that for any $d \in \mathcal{D}^{MD}$, $v_{d^\infty, \gamma}$ is the solution to:
 \begin{align*}
-v_{d^\infty, \gamma} = L_{d}v_{d^\infty, \gamma} = r_{d} + \gamma P_{d^\infty, \gamma} = \left( I - \gamma P_d \right)^{-1} r_d \enspace .
+v_{d^\infty, \gamma} = L_{d}v_{d^\infty, \gamma} = r_{d} + \gamma P_d v_{d^\infty, \gamma} = \left( I - \gamma P_d \right)^{-1} r_d \enspace .
 \end{align*}
 
 Going back to our theorem:
@@ -201,7 +201,7 @@ Return:
 
 Theorem 
 
-:   Upon termination of value iteration with the above criterion, the last iterate is within $\epsilon/2$ of the optimal value function, ie: $\|v^{(k+1}) - v^\star_\gamma\| < \epsilon/2$.
+:   Upon termination of value iteration with the above criterion, the last iterate is within $\epsilon/2$ of the optimal value function, ie: $\|v^{(k+1)} - v^\star_\gamma\| < \epsilon/2$.
 
 Proof 
 
@@ -272,7 +272,7 @@ Definition (Jacobian matrix).
 
 Lemma (Chain rule). \label{chain-rule}
 
-:   If $g: \mathbb{R}^k \to \mathbb{R}^n$ is differentiable at $x\in\mathbb{R}^k$ and $f:\mathbb{R}^n \to \mathbb{R}^m$ is differentiable at $g(x)$, then $f \circ g: \mathbb{R}^n \to \mathbb{R}^m$ is differentiable at $x$ and 
+:   If $g: \mathbb{R}^k \to \mathbb{R}^n$ is differentiable at $x\in\mathbb{R}^k$ and $f:\mathbb{R}^n \to \mathbb{R}^m$ is differentiable at $g(x)$, then $f \circ g: \mathbb{R}^k \to \mathbb{R}^m$ is differentiable at $x$ and 
 \begin{align*}
 D(f\circ g)(x) = D f(g(x)) \circ Dg(x) \enspace,
 \end{align*}

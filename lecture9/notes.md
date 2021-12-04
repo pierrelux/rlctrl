@@ -23,7 +23,7 @@ Tabular TD(0):
   v^{(t+1)}(s_t) = v^{(t)}(s_t) + \eta_t \left(r_t + \gamma v^{(t)}(s_{t+1}) - v^{(t)}(s_t) \right)
   \end{align*}
 
-What does this converge to? We're going to study a more general form an introduce function approximation.
+What does this converge to? We're going to study a more general form and introduce function approximation.
 More specifically, we consider a linear model of the form:
 \begin{align*}
 v(s; w) = \phi(s)^\top w \enspace ,
@@ -41,10 +41,10 @@ Now, we are adding one more layer of approximation: that of approximation of the
 # TD(0) with linear function approximation
 
 \begin{align*}
-w^{(t+1)} = w^{(t)} + \eta_t \left(r_t + \gamma v(s_{t+1}, w^{(t)}) - v(s_t; w^{(t)})\right) \phi_t \enspace.
+w^{(t+1)} = w^{(t)} + \eta_t \left(r_t + \gamma v(s_{t+1}; w^{(t)}) - v(s_t; w^{(t)})\right) \phi_t \enspace.
 \end{align*}
 
-where $\phi_t = \phi(s_t)$. This notational detail is important because it means that also don't have to observe the underlying states directly: only observations of it through the mapping $\phi$ (most likely nonlinear), which also need not be known.
+where $\phi_t = \phi(s_t)$. This notational detail is important because it means that we also don't have to observe the underlying states directly: only observations of it through the mapping $\phi$ (most likely nonlinear), which also need not be known.
 
 # Tabular case
 
@@ -54,7 +54,7 @@ The *tabular* case can be obtained for $\phi(s) \triangleq e_s$: a *one-hot* enc
 
 # Analysis: the ODE approach
 
-Remember the key idea in the ODE approach for the analysis of stochastic approximation algorithms: under the conditions, we can approximate the behavior of algorithm by a continuous-time dynamical system. We obtain his deterministic system by averaging out the noise: by studying the mean iterates. 
+Remember the key idea in the ODE approach for the analysis of stochastic approximation algorithms: under the conditions, we can approximate the behavior of algorithm by a continuous-time dynamical system. We obtain this deterministic system by averaging out the noise: by studying the mean iterates. 
 
 # Underlying stochastic process
 
@@ -98,6 +98,6 @@ Important terms:
 
 Therefore: 
 \begin{align*}
-\Phi^\top X\left( I - \gamma P_d \right) \Phi w - \Phi^\top X r_d   = \mathbb{E}\left[ \phi(S_t) (\phi(S_t)^\top w - \gamma \phi(S_{t+1})^\top w - r(S_t, A_t)\right]
+\Phi^\top X\left( I - \gamma P_d \right) \Phi w - \Phi^\top X r_d   = \mathbb{E}\left[ \phi(S_t) (\phi(S_t)^\top w - \gamma \phi(S_{t+1})^\top w) - r(S_t, A_t)\right]
 \end{align*}
 
